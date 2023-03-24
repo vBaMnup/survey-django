@@ -1,13 +1,17 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("Главная страница")
+    template = "survey/index.html"
+    return render(request, template, {"title": "Сервис опросов!"})
 
 
 def survey_list(request):
-    return HttpResponse("Список опросов")
+    template = "survey/survey_list.html"
+    return render(request, template, {"title": "Список всех опросов!"})
 
 
 def survey_detail(request, pk):
-    return HttpResponse(f"Опрос номер {pk}")
+    template = "survey/survey_detail.html"
+    return render(request, template, {"title": f"Опрос {pk}"})
