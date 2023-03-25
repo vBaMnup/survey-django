@@ -1,4 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-  Список всех опросов на сайте!
-{% endblock %} 
+  <div class="container">
+    <h1 class="mb-4">Список всех опросов на сайте!</h1>
+    {% for survey in surveys %}
+      <div class="card mb-4" onclick="goToSurvey(event)" style="cursor: pointer" data-pk="{{ survey.pk }}">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Автор: {{ survey.creator.username }}</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ survey.title }}</p>
+          <p class="card-text">{{ survey.description }}</p>
+          <p class="card-text">Дата публикации: {{ survey.created_at|date:"d E Y" }}</p>
+        </div>
+      </div>
+      {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
+  </div>
+
+  <script>
+    function goToSurvey(event) {
+      var pk = event.currentTarget.getAttribute("data-pk");
+      window.location.href = "{% url 'survey:survey_detail' 0 %}".replace('0', pk);
+    }
+  </script>
+{% endblock %}
+
+
