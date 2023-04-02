@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+          <div class="card-header bg-primary text-white">
+            <h3 class="text-center">Выход</h3>
+          </div>
+          <div class="card-body">
+            <p>Вы действительно хотите выйти из системы?</p>
+            <form method="POST" {% url 'survey:index' %}>
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary" onclick="redirect('/')">Да, выйти</button>
+              <a href="{% url 'profile' %}" class="btn btn-secondary">Нет, вернуться к профилю</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
