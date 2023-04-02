@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "apps.survey",
     "apps.user",
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [
@@ -89,6 +90,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]

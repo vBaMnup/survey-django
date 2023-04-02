@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+          <div class="card-header bg-primary text-white">
+            <h3 class="text-center">Профиль</h3>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Имя пользователя: {{ user.username }}</li>
+              <li class="list-group-item">Email: {{ email }}</li>
+              <li class="list-group-item">Имя: {{ first_name }}</li>
+              <li class="list-group-item">Фамилия: {{ last_name }}</li>
+              <li class="list-group-item">Валюта: {{ score }}</li>
+            </ul>
+            <a href="{% url 'profile_edit' %}" class="btn btn-primary btn-block mt-3">Редактировать профиль</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
